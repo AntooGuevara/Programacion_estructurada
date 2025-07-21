@@ -124,28 +124,7 @@ def buscarpeliculas():
         else:
             print("\t \u26A0 No hay peliculas en el sistema \u26A0")
             
-            
-def buscarPelicula():
-    borrarpantalla()
-    conexion=conectar()
-    if conexion!=None:
-        print("\n\t.:: \U0001F50D Consultar o Mostrar la Pelicula \U0001F50D::. \n")
-        cursor=conexion.cursor()
-        nombre=input("Dame el nombre de la pelicula a buscar")
-        sql="SELECT * FROM peliculas where nombre=%s"
-        val=(nombre,)
-        cursor.execute(sql,val)
-        registros=cursor.fetchall()
-        if registros:
-            print("\n\BUSCAR PELICULAS")
-            print(f"{'ID':<10} {'NOMBRE':<15} {'CATEGORIA':<15} {'CLASIFICACION':<15} {'GENERO':<15} {'IDIOMA':<15}")
-            print(f"-"*80)
-            for fila in registros:
-                print(f"{fila [0]:<10} {fila [1]:<15} {fila [2]:<15} {fila [3]:<15} {fila [4]:<15} {fila [5]:<15} ")
-            print(f"-"*80)
-        else:
-            print("\t \u26A0 No hay peliculas en el sistema \u26A0")
-            
+          
 def modificarPelicula():
     borrarpantalla()
     conexion=conectar()
