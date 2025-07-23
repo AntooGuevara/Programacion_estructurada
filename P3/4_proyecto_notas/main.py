@@ -74,35 +74,56 @@ def menu_notas(usuario_id,nombre,apellidos):
             lista_notas=nota.mostrar(usuario_id)
             if len(lista_notas)>0:
                 print("\n\tMOSTRAR NOTAS")
-                print(f"{'ID':<10} {'TITULO':<15} {'DESCRIPCION':<15} {'FECHA':<15} ")
+                print(f"{'ID':<10} {'ID USUARIO':<15} {'TITULO':<15} {'DESCRIPCION':<15} {'FECHA':<15} ")
                 print(f"-"*80)
                 for fila in lista_notas:
-                    print(f"{fila [0]:<10} {fila [1]:<15} {fila [2]:<15} {fila [3]:<15} {fila [4]:<15} ")
+                    print(f"{fila[0]:<10} {fila[1]:<15} {fila[2][:15]:<15} {fila[3][:15]:<15} {fila[4]:<15}")
+
                 print(f"-"*80)
             else:
                 print("\t \u26A0 No hay notas en el sistema \u26A0")
             funciones.esperarTecla()
         elif opcion == '3' or opcion=="CAMBIAR":
             funciones.borrarPantalla()
-            print(f"\n \t .:: {nombre} {apellidos}, vamos a modificar un Nota ::. \n")
-            id = input("\t \t ID de la nota a actualizar: ")
-            titulo = input("\t Nuevo título: ")
-            descripcion = input("\t Nueva descripción: ")
-            #Agregar codigo
-            respuesta=nota.cambiar(id,titulo,descripcion)
-            if respuesta:
-                print(f"\n\t\t Se actualizo la nota {titulo} exitosamente")
+            lista_notas = nota.mostrar(usuario_id)
+            if len(lista_notas)>0:
+                print(f"{'ID':<10} {'ID USUARIO':<15} {'TITULO':<15} {'DESCRIPCION':<15} {'FECHA':<15} ")
+                print(f"-"*80)
+                for fila in lista_notas:
+                    print(f"{fila[0]:<10} {fila[1]:<15} {fila[2][:15]:<15} {fila[3][:15]:<15} {fila[4]:<15}")
+
+                print(f"-"*80)
+                funciones.borrarPantalla()
+                print(f"\n \t .:: {nombre} {apellidos}, vamos a modificar un Nota ::. \n")
+                id = input("\t \t ID de la nota a actualizar: ")
+                titulo = input("\t Nuevo título: ")
+                descripcion = input("\t Nueva descripción: ")
+                #Agregar codigo
+
+                
+                respuesta=nota.cambiar(id,titulo,descripcion)
+                if respuesta:
+                    print(f"\n\t\t Se actualizo la nota {titulo} exitosamente")
+                else:
+                    print(f"\n\t\t No fue posible actualizar la nota en este momento")
             else:
-                print(f"\n\t\t No fue posible actualizar la nota en este momento")
-            funciones.esperarTecla()      
+                print("NO HAY NOTAS EN EL SISTEMA")
+                funciones.esperarTecla(2)
+                
         elif opcion == '4' or opcion=="ELIMINAR":
             funciones.borrarPantalla()
+            print(f"{'ID':<10} {'ID USUARIO':<15} {'TITULO':<15} {'DESCRIPCION':<15} {'FECHA':<15} ")
+            print(f"-"*80)
+            for fila in lista_notas:
+                print(f"{fila[0]:<10} {fila[1]:<15} {fila[2][:15]:<15} {fila[3][:15]:<15} {fila[4]:<15}")
+                print(f"-"*80)
+            
             print(f"\n \t .:: {nombre} {apellidos}, vamos a borrar un Nota ::. \n")
             id = input("\t \t ID de la nota a eliminar: ")
             #Agregar codigo
             respuesta=nota.eliminar(id)
             if respuesta:
-                print(f"\n\t\t Se borró la nota {titulo} exitosamente")
+                print(f"\n\t\t Se borró la nota {id} exitosamente")
             else:
                 print(f"\n\t\t No fue posible borrar la nota en este momento")
             funciones.esperarTecla()    
