@@ -11,4 +11,3 @@ try:
 except:
     print(f"En este momento no posible comunicarse con el sistema, intentelo mas tarde ...") 
 
-

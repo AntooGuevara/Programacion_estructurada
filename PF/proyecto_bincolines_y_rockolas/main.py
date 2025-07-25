@@ -24,9 +24,13 @@ def main():
             resultado = usuario.registrar(nombre, apellidos, email, password)
             if resultado:
                 print(f"\n\t✅ {nombre} {apellidos} se registró correctamente con el email: {email}")
+                f.esperartecla()
+                f.borrarpantalla()  
+                
             else:
                 print(f"\n\t❌ No fue posible registrar al usuario, intente de nuevo.")
             f.esperartecla()
+            f.borrarpantalla()
 
         elif opcion == "2" or opcion == "LOGIN":
             f.borrarpantalla()
@@ -57,17 +61,18 @@ def main():
 
 def menu_brincolines_rockolas():
     while True:
+        f.borrarpantalla()
         opcion2 = f.menu_principal_brincolines_rockolas()
         if opcion2 == "1" or opcion2 == "BRINCOLINES":
             f.borrarpantalla()
             while True:
+                f.borrarpantalla()
                 op = f.menu_brincolines()
                 if op == "1":  # Crear pedido
                     nombre = input("Nombre cliente: ").strip()
                     direccion = input("Dirección: ").strip()
-                    fecha = input("Fecha (YYYY-MM-DD): ").strip()
                     duracion = int(input("Duración (horas): "))
-                    if crear(nombre, direccion, fecha, duracion):
+                    if crear(nombre, direccion, duracion):
                         print("✅ Pedido creado con éxito.")
                     else:
                         print("❌ Error al crear el pedido.")
@@ -75,6 +80,7 @@ def menu_brincolines_rockolas():
                     f.borrarpantalla()
 
                 elif op == "2":  # Mostrar pedidos
+                    f.borrarpantalla()
                     pedidos = mostrar()
                     if len(pedidos) > 0:
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
@@ -88,6 +94,7 @@ def menu_brincolines_rockolas():
                     f.borrarpantalla()
 
                 elif op == "3":  # Modificar pedido
+                    f.borrarpantalla()
                     pedidos = mostrar()
                     if len(pedidos) > 0:
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
@@ -97,25 +104,20 @@ def menu_brincolines_rockolas():
                         print("-"*85)
                         try:
                             id = int(input("ID a modificar: "))
+                            nombre = input("Nuevo nombre: ")
+                            direccion = input("Nueva dirección: ")
+                            duracion = int(input("Nueva duración: "))
+                            if modificar(id, nombre, direccion, duracion):
+                                print("✅ Modificado correctamente.")
+                            else:
+                                print("❌ Error al modificar.")
                         except ValueError:
                             print("❌ ID inválido.")
-                            f.esperartecla()
-                            f.borrarpantalla()
-                            continue
-                        nombre = input("Nuevo nombre: ")
-                        direccion = input("Nueva dirección: ")
-                        fecha = input("Nueva fecha (YYYY-MM-DD): ")
-                        duracion = int(input("Nueva duración: "))
-                        if modificar(id, nombre, direccion, fecha, duracion):
-                            print("✅ Modificado correctamente.")
-                        else:
-                            print("❌ Error al modificar.")
-                    else:
-                        print("❌ No hay pedidos para modificar en brincolines.")
                     f.esperartecla()
                     f.borrarpantalla()
 
                 elif op == "4":  # Eliminar pedido
+                    f.borrarpantalla()
                     pedidos = mostrar()
                     if len(pedidos) > 0:
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
@@ -149,13 +151,14 @@ def menu_brincolines_rockolas():
         elif opcion2 == "2" or opcion2 == "ROCKOLAS":
             f.borrarpantalla()
             while True:
+                f.borrarpantalla()
                 op = f.menu_rockolas()
                 if op == "1":  # Crear pedido
+                    f.borrarpantalla()
                     nombre = input("Nombre cliente: ").strip()
                     direccion = input("Dirección: ").strip()
-                    fecha = input("Fecha (YYYY-MM-DD): ").strip()
                     duracion = int(input("Duración (horas): "))
-                    if rockolas.crear(nombre, direccion, fecha, duracion):
+                    if crear_rockola(nombre, direccion, duracion):
                         print("✅ Pedido creado con éxito.")
                     else:
                         print("❌ Error al crear el pedido.")
@@ -163,6 +166,7 @@ def menu_brincolines_rockolas():
                     f.borrarpantalla()
 
                 elif op == "2":  # Mostrar pedidos
+                    f.borrarpantalla()
                     pedidos = rockolas.mostrar()
                     if len(pedidos) > 0:
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
@@ -176,7 +180,8 @@ def menu_brincolines_rockolas():
                     f.borrarpantalla()
 
                 elif op == "3":  # Modificar pedido
-                    pedidos = rockolas.mostrar()
+                    f.borrarpantalla()
+                    pedidos = mostrar_rockola()
                     if len(pedidos) > 0:
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
                         print("-"*85)
@@ -185,25 +190,21 @@ def menu_brincolines_rockolas():
                         print("-"*85)
                         try:
                             id = int(input("ID a modificar: "))
+                            nombre = input("Nuevo nombre: ")
+                            direccion = input("Nueva dirección: ")
+                            duracion = int(input("Nueva duración: "))
+                            if modificar_rockola(id, nombre, direccion, duracion):
+                                print("✅ Modificado correctamente.")
+                            else:
+                                print("❌ Error al modificar.")
                         except ValueError:
                             print("❌ ID inválido.")
                             f.esperartecla()
                             f.borrarpantalla()
-                            continue
-                        nombre = input("Nuevo nombre: ")
-                        direccion = input("Nueva dirección: ")
-                        fecha = input("Nueva fecha (YYYY-MM-DD): ")
-                        duracion = int(input("Nueva duración: "))
-                        if rockolas.modificar(id, nombre, direccion, fecha, duracion):
-                            print("✅ Modificado correctamente.")
-                        else:
-                            print("❌ Error al modificar.")
-                    else:
-                        print("❌ No hay pedidos para modificar en rockolas.")
-                    f.esperartecla()
-                    f.borrarpantalla()
+                            
 
                 elif op == "4":  # Eliminar pedido
+                    f.borrarpantalla()
                     pedidos = rockolas.mostrar()
                     if len(pedidos) > 0:
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
@@ -244,4 +245,4 @@ def menu_brincolines_rockolas():
 
 #para que ejecute todos los menú
 if __name__ == "__main__":
-    main()
+    main() 

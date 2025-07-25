@@ -1,14 +1,17 @@
 from conexion import conexion, cursor
 import datetime
+from datetime import datetime
 
-def crear(nombre, direccion, fecha, duracion):
+def crear(nombre, direccion, duracion):
     try:
+        fecha_actual = datetime.now().strftime('%Y-%m-%d')  # Formato YYYY-MM-DD
         sql = "INSERT INTO brincolines (nombre_cliente, direccion, fecha, duracion) VALUES (%s, %s, %s, %s)"
-        val = (nombre, direccion, fecha, duracion)
+        val = (nombre, direccion, fecha_actual, duracion)
         cursor.execute(sql, val)
         conexion.commit()
         return True
-    except:
+    except Exception as e:
+        print(f"Error al crear brincolín: {e}")
         return False
 
 def mostrar():
@@ -18,14 +21,16 @@ def mostrar():
     except:
         return []
 
-def modificar(id, nombre, direccion, fecha, duracion):
+def modificar(id, nombre, direccion, duracion):
     try:
-        sql = "UPDATE brincolines SET nombre_cliente=%s, direccion=%s, fecha=%s, duracion=%s WHERE id=%s"
-        val = (nombre, direccion, fecha, duracion, id)
+        fecha_actualizacion = datetime.now().strftime('%Y-%m-%d')
+        sql = "UPDATE brincolines SET nombre_cliente=%s, direccion=%s, duracion=%s, fecha=%s WHERE id=%s"
+        val = (nombre, direccion, duracion, fecha_actualizacion, id)
         cursor.execute(sql, val)
         conexion.commit()
         return True
-    except:
+    except Exception as e:
+        print(f"Error al modificar brincolín: {e}")
         return False
 
 def eliminar(id):
