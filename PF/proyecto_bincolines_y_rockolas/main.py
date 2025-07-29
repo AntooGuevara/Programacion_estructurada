@@ -4,7 +4,7 @@ from usuarios import usuarios as usuario
 from brincolines.brincolines import crear, mostrar, modificar, eliminar
 from rockolas.rockolas import crear as crear_rockola, mostrar as mostrar_rockola, modificar as modificar_rockola, eliminar as eliminar_rockola
 import rockolas.rockolas as rockolas
-
+import datetime
 
 # Menú de registro e inicio de sesión
 def main():
@@ -86,7 +86,7 @@ def menu_brincolines_rockolas():
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
                         print("-"*85)
                         for p in pedidos:
-                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3]:<15} {p[4]:<10}")
+                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3].strftime('%Y-%m-%d'):<15} {p[4]:<10}")
                         print("-"*85)
                     else:
                         print("❌ No hay pedidos en brincolines.")
@@ -100,7 +100,7 @@ def menu_brincolines_rockolas():
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
                         print("-"*85)
                         for p in pedidos:
-                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3]:<15} {p[4]:<10}")
+                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3].strftime('%Y-%m-%d'):<15} {p[4]:<10}")
                         print("-"*85)
                         try:
                             id = int(input("ID a modificar: "))
@@ -123,7 +123,7 @@ def menu_brincolines_rockolas():
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
                         print("-"*85)
                         for p in pedidos:
-                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3]:<15} {p[4]:<10}")
+                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3].strftime('%Y-%m-%d'):<15} {p[4]:<10}")
                         print("-"*85)
                         try:
                             id = int(input("ID a eliminar: "))
@@ -172,7 +172,7 @@ def menu_brincolines_rockolas():
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
                         print("-"*85)
                         for p in pedidos:
-                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3]:<15} {p[4]:<10}")
+                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3].strftime('%Y-%m-%d'):<15} {p[4]:<10}")
                         print("-"*85)
                     else:
                         print("❌ No hay pedidos en rockolas.")
@@ -186,7 +186,7 @@ def menu_brincolines_rockolas():
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
                         print("-"*85)
                         for p in pedidos:
-                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3]:<15} {p[4]:<10}")
+                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3].strftime('%Y-%m-%d'):<15} {p[4]:<10}")
                         print("-"*85)
                         try:
                             id = int(input("ID a modificar: "))
@@ -210,7 +210,7 @@ def menu_brincolines_rockolas():
                         print(f"{'ID':<10} {'NOMBRE':<20} {'DIRECCION':<30} {'FECHA':<15} {'DURACION':<10}")
                         print("-"*85)
                         for p in pedidos:
-                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3]:<15} {p[4]:<10}")
+                            print(f"{p[0]:<10} {p[1]:<20} {p[2]:<30} {p[3].strftime('%Y-%m-%d'):<15} {p[4]:<10}")
                         print("-"*85)
                         try:
                             id = int(input("ID a eliminar: "))
